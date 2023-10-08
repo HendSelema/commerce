@@ -1,0 +1,35 @@
+<div>
+    <h2 class="my-3"> login form :  </h2>
+    <form [formGroup]="signinform" (ngSubmit)="signIn(signinform)">
+        <h2 *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</h2>
+       
+        <div class="mb-3">
+            <label for="">email</label>
+            <input [class.is-invalid]="signinform.get('email')?.errors&& signinform.get('email')?.touched"
+                [class.is-valid]="signinform.get('email')?.errors == null"
+             formControlName="email" type="email" class="form-control">
+            <div *ngIf="signinform.get('email')?.errors&& signinform.get('email')?.touched" class="alert alert-danger">
+                <p *ngIf="signinform.get('email')?.getError('required')">required input</p>
+                <p *ngIf="signinform.get('email')?.getError('email')">enter avalid email</p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="">password</label>
+            <input [class.is-invalid]="signinform.get('password')?.errors&& signinform.get('password')?.touched"
+            [class.is-valid]="signinform.get('password')?.errors == null"
+            formControlName="password" type="password" class="form-control">
+            <div *ngIf="signinform.get('password')?.errors&& signinform.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="signinform.get('password')?.getError('required')">required input</p>
+                <p *ngIf="signinform.get('password')?.getError('pattern')">enter avalid password</p>
+            </div>
+        </div>
+      
+    
+        <button [disabled]="signinform.invalid" type="submit" class="btn btn-success">
+            <span *ngIf="isloading">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+            </span>
+            Register</button>
+        <a routerLink="/forgotPassword" class=" mx-3 text-main"> forgot password ...?</a>    
+    </form>
+</div>

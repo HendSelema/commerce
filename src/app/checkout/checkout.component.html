@@ -1,0 +1,21 @@
+<form class="my-5 m-auto w-75" [formGroup]="paymentForm" (ngSubmit)="paymentFn(paymentForm)" >
+    <label for="details" class="fs-4 my-1">details</label>
+    <input formControlName="details" type="text" id="details" class="form-control">
+    <div *ngIf="paymentForm.get('details')?.errors&& paymentForm.get('details')?.touched" class="alert alert-danger">
+        <p *ngIf="paymentForm.get('details')?.getError('required')">required input</p>
+    </div>
+
+    <label for="phone" class="fs-4 my-1 mt-2">phone</label>
+    <input formControlName="phone" type="tel" id="phone" class="form-control">
+    <div *ngIf="paymentForm.get('phone')?.errors&& paymentForm.get('phone')?.touched" class="alert alert-danger">
+        <p *ngIf="paymentForm.get('phone')?.getError('required')">required input</p>
+    </div>
+
+    <label for="city" class="fs-4 my-1 mt-2">city</label>
+    <input formControlName="city" type="text" id="city" class="form-control">
+    <div *ngIf="paymentForm.get('city')?.errors&& paymentForm.get('city')?.touched" class="alert alert-danger">
+        <p *ngIf="paymentForm.get('city')?.getError('required')">required input</p>
+    </div>
+    
+    <button class="btn btn-success mt-3 p-2 fs-5" [disabled]="paymentForm.invalid">pay</button>
+</form>

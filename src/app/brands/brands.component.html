@@ -1,0 +1,11 @@
+<div class="my-5">
+<h1 class="fw-bolder fs-1 text-main text-center pb-5">All Brands</h1>
+<div class="row gy-4">
+    <div *ngFor="let data of brandData" class="col-md-3">
+        <div  class=" rounded category border  text-center">
+            <img [src]="data.image" class="w-100 ">
+            <h6 class="  pb-3 fs-5 ">{{data.name}}</h6>
+        </div>
+        
+    </div>
+</div>
