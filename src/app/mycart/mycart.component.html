@@ -1,0 +1,51 @@
+<div class="bg-main-light my-5 p-5">
+<div class="row ">
+    <div class="col-md-6">
+        <div>
+            <h2 class="fw-bolder">shop cart</h2>
+            <h4 class="text-main">Total Price: <span class="text-black">{{cartDetails.totalCartPrice}}</span> </h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div>
+            
+    <button class="btn btn-success">
+        <a routerLink="/checkout" class="text-light">
+            <i class="fa-regular fa-credit-card mx-1"></i>
+            online Payment
+        </a>
+       
+    </button>
+            <h4 class="float-end mt-5 text-main">Total Num Of Cart:<span class="text-black">{{cartNum}}</span> </h4>
+        </div>
+    </div>
+</div>
+
+
+
+<hr/>
+    <div class="my-4" *ngFor="let product of cartDetails.products">
+        <div class="row pb-2 border-bottom" *ngIf="product.count !==0">
+                <div class="col-md-2">
+                        <div >
+                            <img [src]="product.product.imageCover" [alt]="product.product.title" class="w-100">
+                        </div>
+                    </div>
+                    <div class="col-md-10 d-flex justify-content-between align-items-center">
+                        <div class="">
+                            <h4 class="text-main">{{product.product.title}}</h4>
+                            <h4>{{product.price}} EGP</h4>
+                            <button (click)="removeItem(product.product._id)" class="btn btn-outline-danger mt-2"><i class="fa-solid fa-trash-can"></i> delete</button>
+                        </div>
+                        <div class="d-flex mt-5 align-items-baseline">
+                            <button (click)="updataItem(product.product._id,product.count-1)" class="btn btn-outline-success fs-4"> -</button>      
+                            <h5 class="mx-2">{{product.count}}</h5>
+                            <button (click)="updataItem(product.product._id,product.count+1)" class="btn btn-outline-success fs-4 "> +</button>      
+                </div>
+                    </div>
+        </div>
+    
+    </div>
+
+</div>
+

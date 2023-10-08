@@ -1,0 +1,22 @@
+<div class="my-5">    
+    <h2>shop popular <span class="text-main">Products</span> </h2>
+<div class="row gy-3">
+    <div *ngFor="let data of catProduct" class="col-md-3">
+        <a [routerLink]="['/details',data._id]">
+                <div class=" product  p-5 text-center">
+            <img [src]="data.imageCover" class="w-100 imgStyle">
+            <p class="text-main">{{data.category.name}}</p>
+            <h6 class="fw-bolder">{{data.title.split(' ').slice(0,2).join(' ')}}</h6>
+            <div class="text-muted d-flex justify-content-between">
+                <span>{{data.price}} EGP</span>
+                <span><i class="fa-solid fa-star rating-color"></i> {{data.ratingsAverage}}</span>
+            </div>
+            <button class="btn bg-main w-100 text-light">+ Add </button>
+        </div>
+        </a>
+    
+        
+    </div>
+
+</div>
+</div>
